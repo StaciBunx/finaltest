@@ -180,6 +180,9 @@ INSERT INTO hamsters (id_hamsters, id_class, name, birthday, command) VALUES
 **10. Удалив из таблицы верблюдов, т.к. верблюдов решили перевезти в другой питомник на зимовку. Объединить таблицы лошади, и ослы в одну таблицу.**
 
 ```
+DROP TABLE camels;
+SELECT id_class, name, birthday, command FROM horses
+UNION SELECT id_class, name, birthday, command FROM donkeys;
 
 ```
 **11. Создать новую таблицу “молодые животные” в которую попадут все
