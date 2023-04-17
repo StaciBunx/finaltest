@@ -62,61 +62,89 @@ CREATE database human_friends;
 ```
 USE human_friends;
 
-DROP TABLE IF EXISTS animal_type;
-CREATE TABLE animal_type
+DROP TABLE IF EXISTS animal_class;
+CREATE TABLE animal_class
 (
-	id_type INT PRIMARY KEY AUTO_INCREMENT,
-    type VARCHAR(45) NOT NULL
+	id_class INT AUTO_INCREMENT PRIMARY KEY,
+	type VARCHAR(45)
 );
 
-DROP TABLE IF EXISTS animal_kind;
-CREATE TABLE animal_kind
-(
-	id_kind INT PRIMARY KEY AUTO_INCREMENT,
-    kind VARCHAR(45) NOT NULL,
-    id_type INT,
-    FOREIGN KEY (id_type) REFERENCES animal_type(id_type) ON UPDATE CASCADE ON DELETE CASCADE
-);
+INSERT INTO animal_class (id_class, type)
+VALUES (1, 'pack'),
+(2, 'home');
 
-DROP TABLE IF EXISTS animals;
-CREATE TABLE animals
+DROP TABLE IF EXISTS horses;
+CREATE TABLE horses
 (
-	id_animal INT PRIMARY KEY AUTO_INCREMENT,
-    id_kind INT,
+	id_horses INT AUTO_INCREMENT PRIMARY KEY,
+    id_class INT,
     name VARCHAR(45) NOT NULL,
     birthday DATE NOT NULL,
     command VARCHAR(45),
-    FOREIGN KEY (id_kind) REFERENCES animal_kind(id_kind) ON UPDATE CASCADE ON DELETE CASCADE
+    FOREIGN KEY (id_class) REFERENCES animal_class(id_class) ON UPDATE CASCADE ON DELETE CASCADE
 );
+
+DROP TABLE IF EXISTS camels;
+CREATE TABLE camels
+(
+	id_camels INT AUTO_INCREMENT PRIMARY KEY,
+    id_class INT,
+    name VARCHAR(45) NOT NULL,
+    birthday DATE NOT NULL,
+    command VARCHAR(45),
+    FOREIGN KEY (id_class) REFERENCES animal_class(id_class) ON UPDATE CASCADE ON DELETE CASCADE
+);
+
+DROP TABLE IF EXISTS donkeys;
+CREATE TABLE donkeys
+(
+	id_donkeys INT AUTO_INCREMENT PRIMARY KEY,
+    id_class INT,
+    name VARCHAR(45) NOT NULL,
+    birthday DATE NOT NULL,
+    command VARCHAR(45),
+    FOREIGN KEY (id_class) REFERENCES animal_class(id_class) ON UPDATE CASCADE ON DELETE CASCADE
+);
+
+DROP TABLE IF EXISTS cats;
+CREATE TABLE cats
+(
+	id_cats INT AUTO_INCREMENT PRIMARY KEY,
+    id_class INT,
+    name VARCHAR(45) NOT NULL,
+    birthday DATE NOT NULL,
+    command VARCHAR(45),
+    FOREIGN KEY (id_class) REFERENCES animal_class(id_class) ON UPDATE CASCADE ON DELETE CASCADE
+);
+
+DROP TABLE IF EXISTS dogs;
+CREATE TABLE dogs
+(
+	id_dogs INT AUTO_INCREMENT PRIMARY KEY,
+    id_class INT,
+    name VARCHAR(45) NOT NULL,
+    birthday DATE NOT NULL,
+    command VARCHAR(45),
+    FOREIGN KEY (id_class) REFERENCES animal_class(id_class) ON UPDATE CASCADE ON DELETE CASCADE
+);
+
+DROP TABLE IF EXISTS hamsters;
+CREATE TABLE hamsters
+(
+	id_hamsters INT AUTO_INCREMENT PRIMARY KEY,
+    id_class INT,
+    name VARCHAR(45) NOT NULL,
+    birthday DATE NOT NULL,
+    command VARCHAR(45),
+    FOREIGN KEY (id_class) REFERENCES animal_class(id_class) ON UPDATE CASCADE ON DELETE CASCADE
+);
+
 ```
 
 **9. Заполнить низкоуровневые таблицы именами(животных), командами
 которые они выполняют и датами рождения**
 
 ```
-INSERT INTO animal_type (id_type, type) VALUES
-(1, 'home animal'),
-(2, 'pack animal');
-
-INSERT INTO animal_kind (id_kind, kind, id_type) VALUES
-(1, 'cat', 1),
-(2, 'dog', 1),
-(3, 'hamster', 1),
-(4, 'horse', 2),
-(5, 'camel', 2),
-(6, 'donkey', 2);
-
-
-INSERT INTO animals (id_animal, id_kind, name, birthday, command) VALUES
-(1, 1, 'Varya', '2022-05-01', 'jump'),
-(2, 2, 'Shon', '2020-03-12', 'bark'),
-(3, 3, 'Keka', '2023-03-08', 'eat'),
-(4, 4, 'Pavel', '2012-07-12', 'run'),
-(5, 5, 'Buba', '2017-09-14', 'stop'),
-(6, 6, 'Ia', '2019-04-08', 'stop'),
-(7, 1, 'Musya', '2015-04-15', 'play'),
-(8, 2, 'Lotty', '2009-10-03', 'sleep'),
-(9, 4, 'Mister', '2018-08-07', 'jump');
 ```
 
 **10. Удалив из таблицы верблюдов, т.к. верблюдов решили перевезти в другой питомник на зимовку. Объединить таблицы лошади, и ослы в одну таблицу.**
