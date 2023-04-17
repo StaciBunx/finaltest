@@ -48,7 +48,7 @@ history
 
 **6. Нарисовать диаграмму, в которой есть класс родительский класс, домашние животные и вьючные животные, в составы которых в случае домашних животных войдут классы: собаки, кошки, хомяки, а в класс вьючные животные войдут: Лошади, верблюды и ослы).**
 
-![Диаграмма БД](/DB_diagram.drawio.png)
+![Диаграмма БД](/Diagram.drawio.png)
 
 **7. В подключенном MySQL репозитории создать базу данных “Друзья
 человека”**
@@ -145,13 +145,42 @@ CREATE TABLE hamsters
 которые они выполняют и датами рождения**
 
 ```
+INSERT INTO horses (id_horses, id_class, name, birthday, command) VALUES
+(1, 1, 'Pavel', '2012-02-13', 'run'),
+(2, 1, 'Knight', '2017-01-01', 'run'),
+(3, 1, 'Lady', '2019-05-11', 'jump');
+
+INSERT INTO camels (id_camels, id_class, name, birthday, command) VALUES
+(1, 1, 'Jafar', '2014-09-13', 'stop'),
+(2, 1, 'Alladin', '2021-01-01', 'run'),
+(3, 1, 'Mariam', '2019-07-11', 'jump');
+
+INSERT INTO donkeys (id_donkeys, id_class, name, birthday, command) VALUES
+(1, 1, 'Pablo', '2017-08-13', 'stop'),
+(2, 1, 'Picasso', '2021-01-01', 'run'),
+(3, 1, 'Andres', '2019-07-11', 'sleep');
+
+INSERT INTO cats (id_cats, id_class, name, birthday, command) VALUES
+(1, 2, 'Musya', '2015-04-13', 'eat'),
+(2, 2, 'Varvara', '2022-05-01', 'play'),
+(3, 2, 'Bublik', '2019-07-11', 'sleep');
+
+INSERT INTO dogs (id_dogs, id_class, name, birthday, command) VALUES
+(1, 2, 'Barbos', '2017-07-13', 'sit'),
+(2, 2, 'Shon', '2020-08-11', 'play'),
+(3, 2, 'Lotti', '2023-02-11', 'jump');
+
+INSERT INTO hamsters (id_hamsters, id_class, name, birthday, command) VALUES
+(1, 2, 'Buba', '2023-02-13', 'sleep'),
+(2, 2, 'Kiki', '2021-08-11', 'sleep'),
+(3, 2, 'Peppa', '2022-02-12', 'sleep');
+
 ```
 
 **10. Удалив из таблицы верблюдов, т.к. верблюдов решили перевезти в другой питомник на зимовку. Объединить таблицы лошади, и ослы в одну таблицу.**
 
 ```
-DELETE FROM animals WHERE id_kind=5;
-SELECT * FROM animals WHERE id_kind=4 OR id_kind=6;
+
 ```
 **11. Создать новую таблицу “молодые животные” в которую попадут все
 животные старше 1 года, но младше 3 лет и в отдельном столбце с точностью до месяца подсчитать возраст животных в новой таблице**
