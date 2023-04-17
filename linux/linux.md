@@ -1,6 +1,6 @@
 **1. Используя команду cat в терминале операционной системы Linux, создать два файла Домашние животные (заполнив файл собаками, кошками, хомяками) и Вьючные животными заполнив файл (Лошадьми, верблюдами и ослы), а затем объединить их. Просмотреть содержимое созданного файла. Переименовать файл, дав ему новое имя (Друзья человека).**
 
-```
+```bash
 cat > 'Домашние животные'
 Собаки
 Кошки
@@ -18,14 +18,14 @@ mv Животные 'Друзья человека'
 ```
 **2. Создать директорию, переместить файл туда.**
 
-```
+```bash
 mkdir Питомник
 mv 'Друзья человека' Питомник
 ```
 
 **3. Подключить дополнительный репозиторий MySQL. Установить любой пакет из этого репозитория.**
 
-```
+```bash
 sudo apt-get update
 sudo apt-get install mysql-server
 sudo apt-get install msql-workbench-community
@@ -33,7 +33,7 @@ sudo apt-get install msql-workbench-community
 
 **4. Установить и удалить deb-пакет с помощью dpkg.**
 
-```
+```bash
 sudo dpkg -i google-chrome-stable_current_amd64.deb
 sudo apt install -f
 apt list | grep google
@@ -42,7 +42,9 @@ sudo dpkg -r google-chrome-stable
 
 **5. Выложить историю команд в терминале ubuntu**
 
+```bash
 history
+```
 
 ![Скриншот с историей команд](/linux/Linux1.jpg)
 
@@ -52,14 +54,14 @@ history
 
 **7. В подключенном MySQL репозитории создать базу данных “Друзья
 человека”**
-```
+```bash
 mysql -u root -p
 
 CREATE database human_friends;
 ```
 
 **8. Создать таблицы с иерархией из диаграммы в БД**
-```
+```sql
 USE human_friends;
 
 DROP TABLE IF EXISTS animal_class;
@@ -144,7 +146,7 @@ CREATE TABLE hamsters
 **9. Заполнить низкоуровневые таблицы именами(животных), командами
 которые они выполняют и датами рождения**
 
-```
+```sql
 INSERT INTO horses (id_horses, id_class, name, birthday, command) VALUES
 (1, 1, 'Pavel', '2012-02-13', 'run'),
 (2, 1, 'Knight', '2017-01-01', 'run'),
@@ -179,7 +181,7 @@ INSERT INTO hamsters (id_hamsters, id_class, name, birthday, command) VALUES
 
 **10. Удалив из таблицы верблюдов, т.к. верблюдов решили перевезти в другой питомник на зимовку. Объединить таблицы лошади, и ослы в одну таблицу.**
 
-```
+```sql
 DROP TABLE camels;
 SELECT id_class, name, birthday, command FROM horses
 UNION SELECT id_class, name, birthday, command FROM donkeys;
@@ -187,7 +189,7 @@ UNION SELECT id_class, name, birthday, command FROM donkeys;
 ```
 **11. Создать новую таблицу “молодые животные” в которую попадут все
 животные старше 1 года, но младше 3 лет и в отдельном столбце с точностью до месяца подсчитать возраст животных в новой таблице**
-```
+```sql
 CREATE TEMPORARY TABLE animals AS
 SELECT name, birthday, 'horses' as species  FROM horses
 UNION SELECT name, birthday, 'donkeys' AS species FROM donkeys
@@ -204,7 +206,7 @@ WHERE YEAR(CURDATE())-YEAR(birthday) BETWEEN 1 and 3;
 **12. Объединить все таблицы в одну, при этом сохраняя поля, указывающие на
 прошлую принадлежность к старым таблицам.**
 
-```
+```sql
 CREATE TABLE everything AS
 SELECT h.name, h.birthday, h.command, y.months, y.species, a.type
 FROM horses h
