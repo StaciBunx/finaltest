@@ -187,6 +187,19 @@ UNION SELECT id_class, name, birthday, command FROM donkeys;
 ```
 **11. Создать новую таблицу “молодые животные” в которую попадут все
 животные старше 1 года, но младше 3 лет и в отдельном столбце с точностью до месяца подсчитать возраст животных в новой таблице**
+```
+CREATE TEMPORARY TABLE animals AS
+SELECT name, birthday, 'horses' as species  FROM horses
+UNION SELECT name, birthday, 'donkeys' AS species FROM donkeys
+UNION SELECT name, birthday, 'dogs' AS species FROM dogs
+UNION SELECT name, birthday, 'cats' AS species FROM cats
+UNION SELECT name, birthday, 'hamsters' AS species FROM hamsters;
+
+CREATE TABLE young_animals AS
+SELECT name, species, birthday, TIMESTAMPDIFF(MONTH, Birthday, CURDATE()) as months
+FROM animals
+WHERE YEAR(CURDATE())-YEAR(birthday) BETWEEN 1 and 3;
+```
 
 **12. Объединить все таблицы в одну, при этом сохраняя поля, указывающие на
 прошлую принадлежность к старым таблицам.**
