@@ -203,3 +203,31 @@ WHERE YEAR(CURDATE())-YEAR(birthday) BETWEEN 1 and 3;
 
 **12. Объединить все таблицы в одну, при этом сохраняя поля, указывающие на
 прошлую принадлежность к старым таблицам.**
+
+```
+CREATE TABLE everything AS
+SELECT h.name, h.birthday, h.command, y.months, y.species, a.type
+FROM horses h
+LEFT JOIN young_animals y ON y.name=h.name
+LEFT JOIN animal_class a ON a.id_class = h.id_class
+UNION
+SELECT d.name, d.birthday, d.command, y.months, y.species, a.type
+FROM donkeys d
+LEFT JOIN young_animals y ON y.name=d.name
+LEFT JOIN animal_class a ON a.id_class = d.id_class
+UNION
+SELECT c.name, c.birthday, c.command, y.months, y.species, a.type
+FROM cats c
+LEFT JOIN young_animals y ON y.name=c.name
+LEFT JOIN animal_class a ON a.id_class = c.id_class
+UNION
+SELECT dogs.name, dogs.birthday, dogs.command, y.months, y.species, a.type
+FROM dogs
+LEFT JOIN young_animals y ON y.name=dogs.name
+LEFT JOIN animal_class a ON a.id_class = dogs.id_class
+UNION
+SELECT ham.name, ham.birthday, ham.command, y.months, y.species, a.type
+FROM hamsters ham
+LEFT JOIN young_animals y ON y.name=ham.name
+LEFT JOIN animal_class a ON a.id_class = ham.id_class;
+```
