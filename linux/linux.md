@@ -5,33 +5,35 @@ cat > 'Домашние животные'\
 Кошки\
 Хомяки
 
-cat > 'Вьючные Животные'\
+cat > 'Вьючные животные'\
 Лошади\
 Верблюды\
 Ослы
 
-cat 'Домашние животные' 'Вьючные животые' > Животные\
+cat 'Домашние животные' 'Вьючные животные' > Животные\
 cat Животные\
 mv Животные 'Друзья человека'
 
 **2. Создать директорию, переместить файл туда.**
 
 mkdir Питомник\
-mv 'Друзья Человека' Питомник
+mv 'Друзья человека' Питомник
 
 **3. Подключить дополнительный репозиторий MySQL. Установить любой пакет из этого репозитория.**
 
-sudo dpkg -i mysql-apt-config_0.8.24-1_all.deb\
 sudo apt-get update\
 sudo apt-get install mysql-server\
 sudo apt-get install msql-workbench-community
 
 **4. Установить и удалить deb-пакет с помощью dpkg.**
 
-sudo -i dpkg -i google-chrome-stable_current_amd64.deb\
+sudo dpkg -i google-chrome-stable_current_amd64.deb\
 sudo apt install -f\
 apt list | grep google\
-dpkg -r google-chrome-stable
+sudo dpkg -r google-chrome-stable
 
 **5. Выложить историю команд в терминале ubuntu**
+
 history
+
+![Скриншот с историей команд](/linux/Linux1.jpg)
