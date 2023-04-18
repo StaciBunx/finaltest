@@ -3,7 +3,7 @@ package Model;
 /**
  * Абстракатный класс
  */
-public abstract class Animal {
+public abstract class Animal{
     private String id = "";
     protected String name;
     protected String birthday;
@@ -52,8 +52,10 @@ public abstract class Animal {
         this.command = command;
     }
 
+
     @Override
     public String toString() {
-        return String.format("Id:%s, name:%s, birthday:%s, command:%s", getId(), getName(), getBirthday(), getCommand());
+        return String.format("Id: %s, name: %s, birthday: %s, command: %s", getId(), getName(),
+                getBirthday(), getCommand());
     }
 }
