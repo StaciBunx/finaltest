@@ -1,20 +1,18 @@
 package Model;
 
+import Controller.AnimalManager;
+
 /**
  * Абстракатный класс
  */
-public abstract class Animal{
+public abstract class Animal implements AnimalManager{
     private String id = "";
     protected String name;
     protected String birthday;
     protected String command;
 
     public Animal(String id, String name, String birthday, String command) {
-        this(name, birthday, command);
         this.id = id;
-    }
-
-    public Animal(String name, String birthday, String command) {
         this.name = name;
         this.birthday = birthday;
         this.command = command;
@@ -52,10 +50,11 @@ public abstract class Animal{
         this.command = command;
     }
 
-
     @Override
     public String toString() {
         return String.format("Id: %s, name: %s, birthday: %s, command: %s", getId(), getName(),
                 getBirthday(), getCommand());
     }
+
+
 }

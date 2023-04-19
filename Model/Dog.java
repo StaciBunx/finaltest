@@ -1,6 +1,6 @@
 package Model;
 
-public class Dog  extends Animal{
+public class Dog extends Animal{
     private String type = "home animal";
 
     public String getType() {
