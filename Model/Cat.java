@@ -16,10 +16,10 @@ public class Cat extends Animal{
         return String.format("%s, type: %s", super.toString(), getType());
     }
 
-    @Override
-    public Animal createAnimal(String id, String name, String birthday, String command) {
-        return new Cat(type, name, birthday, command);
-    }
+    // @Override
+    // public Animal createAnimal(String id, String name, String birthday, String command) {
+    //     return new Cat(type, name, birthday, command);
+    // }
 
 
 }

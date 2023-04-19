@@ -32,8 +32,8 @@ public class ViewAnimals {
             try {
                 switch (com) {
                     case ADD:
-                        Animal animal = setAnimal();
-                        shelter.addAnimal(animal);
+                        Animal newAnimal = setAnimal();
+                        shelter.addAnimal(newAnimal);
                         break;
 
                     case COMM:

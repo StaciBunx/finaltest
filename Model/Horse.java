@@ -17,8 +17,8 @@ public class Horse extends Animal{
         return String.format("%s, type: %s", super.toString(), getType());
     }
 
-    @Override
-    public Animal createAnimal(String id, String name, String birthday, String command) {
-        return new Horse(type, name, birthday, command);
-    }
+    // @Override
+    // public Animal createAnimal(String id, String name, String birthday, String command) {
+    //     return new Horse(type, name, birthday, command);
+    // }
 }
