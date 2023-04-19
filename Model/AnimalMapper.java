@@ -7,8 +7,8 @@ public class AnimalMapper {
                 animal.getCommand(), animal.getType());
     }
 
-    public String[] map(String line) {
+    public Animal map(String line) {
         String[] lines = line.split(",");
-        return lines;
+        return new AnimalBasic(lines[0], lines[1], lines[2], lines[3], lines[4]);
     }
 }

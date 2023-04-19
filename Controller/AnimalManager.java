@@ -4,8 +4,15 @@ import Model.Animal;
 import Model.Cat;
 import Model.Shelter;
 
-public interface AnimalManager {
-    // public Animal createAnimal(String id, String name, String birthday, String command);
+public class AnimalManager {
+    private Shelter shelter;
 
+    public AnimalManager(Shelter shelter) {
+        this.shelter = shelter;
+    }
 
+    public void saveAnimal(Animal animal) throws Exception {
+        validateAnimal(animal);
+        shelter.addAnimal(animal);
+    }
 }
