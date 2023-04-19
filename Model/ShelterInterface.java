@@ -1,6 +1,9 @@
 package Model;
 
-public class ShelterInterface {
-    List<Animal>
+import java.util.List;
 
+public interface ShelterInterface {
+    List<Animal> getAllAnimals();
+    String createAnimal(Animal animal);
+    Animal showAnimal (String id);
 }
