@@ -15,12 +15,11 @@ import Model.Shelter;
 public class ViewAnimals {
 
     // private Shelter shelter = new Shelter();
-    private AnimalManager animalManager;
+    private AnimalManager manager;
 
-    public ViewAnimals (AnimalManager animalManager) {
-        this.animalManager = animalManager;
+    public ViewAnimals(AnimalManager manager) {
+        this.manager = manager;
     }
-
 
     public void run() {
         Commands com = Commands.NONE;
@@ -39,7 +38,8 @@ public class ViewAnimals {
                 switch (com) {
                     case ADD:
                         Animal newAnimal = setAnimal();
-
+                        manager.saveAnimal(newAnimal);
+                        System.out.println("New animal has been added!\n\n");
                         break;
 
                     case COMM:
@@ -58,7 +58,7 @@ public class ViewAnimals {
 
     }
 
-    private Animal setAnimal() throws Exception{
+    private Animal setAnimal() throws Exception {
         String species = prompt("Type what is the animal:\n1.cat\n2.dog\n3.hamster\n4.horse\n5.camel\n6.donkey");
         String id = prompt("Id: ");
         String name = prompt("Name: ");
@@ -77,9 +77,6 @@ public class ViewAnimals {
         if (species.contains("6"))
             return new Donkey(id, name, birthday, command);
         throw new Exception("Wrong command");
-
-
-
 
     }
 
