@@ -13,6 +13,10 @@ public class Shelter implements ShelterInterface {
     // shelter.add(animal);
     // }
 
+    public Shelter(FileOperations fileOperations) {
+        this.fileOperations = fileOperations;
+    }
+
     @Override
     public List<Animal> getAllAnimals() {
         List<String> lines = fileOperations.readAllLines();
@@ -28,7 +32,6 @@ public class Shelter implements ShelterInterface {
         List<Animal> animals = getAllAnimals();
         animals.add(animal);
         saveAnimalForFile(animals);
-
 
     }
 

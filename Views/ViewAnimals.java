@@ -14,7 +14,13 @@ import Model.Shelter;
 
 public class ViewAnimals {
 
-    private Shelter shelter = new Shelter();
+    // private Shelter shelter = new Shelter();
+    private AnimalManager animalManager;
+
+    public ViewAnimals (AnimalManager animalManager) {
+        this.animalManager = animalManager;
+    }
+
 
     public void run() {
         Commands com = Commands.NONE;
@@ -33,7 +39,7 @@ public class ViewAnimals {
                 switch (com) {
                     case ADD:
                         Animal newAnimal = setAnimal();
-                        shelter.addAnimal(newAnimal);
+
                         break;
 
                     case COMM:

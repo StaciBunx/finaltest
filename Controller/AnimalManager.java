@@ -12,7 +12,7 @@ public class AnimalManager {
     }
 
     public void saveAnimal(Animal animal) throws Exception {
-        validateAnimal(animal);
-        shelter.addAnimal(animal);
+        // validateAnimal(animal);
+        shelter.createAnimal(animal);
     }
 }
