@@ -5,11 +5,12 @@ import Controller.AnimalManager;
 /**
  * Абстракатный класс
  */
-public abstract class Animal implements AnimalManager{
+public abstract class Animal{
     private String id = "";
     protected String name;
     protected String birthday;
     protected String command;
+    private String type = "";
 
     public Animal(String id, String name, String birthday, String command) {
         this.id = id;
@@ -50,11 +51,14 @@ public abstract class Animal implements AnimalManager{
         this.command = command;
     }
 
+    public String getType() {
+        return type;
+    }
+
     @Override
     public String toString() {
         return String.format("Id: %s, name: %s, birthday: %s, command: %s", getId(), getName(),
                 getBirthday(), getCommand());
     }
-
 
 }
