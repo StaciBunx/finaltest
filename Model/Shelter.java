@@ -30,7 +30,9 @@ public class Shelter implements ShelterInterface {
     @Override
     public void createAnimal(Animal animal) {
         List<Animal> animals = getAllAnimals();
-        animals.add(animal);
+        for (Animal item : animals) {
+            System.out.println(item);
+        }
         saveAnimalForFile(animals);
 
     }

@@ -1,22 +1,39 @@
 package Model;
 
-import Controller.AnimalManager;
+// import Controller.AnimalManager;
 
 /**
  * Абстракатный класс
  */
-public abstract class Animal{
+public abstract class Animal {
     private String id = "";
     protected String name;
     protected String birthday;
     protected String command;
-    private String type = "";
+    private String type;
+
+    // public Animal(String id, String name, String birthday, String command, String type) {
+    //     this.id = id;
+    //     this.name = name;
+    //     this.birthday = birthday;
+    //     this.command = command;
+    //     this.type = type;
+    // }
+
+    public String getType() {
+        return type;
+    }
 
     public Animal(String id, String name, String birthday, String command) {
         this.id = id;
         this.name = name;
         this.birthday = birthday;
         this.command = command;
+    }
+
+    public Animal(String id, String name, String birthday, String command, String type) {
+        this(id, name, birthday, command);
+        this.type = type;
     }
 
     public String getId() {
@@ -51,14 +68,11 @@ public abstract class Animal{
         this.command = command;
     }
 
-    public String getType() {
-        return type;
-    }
 
     @Override
     public String toString() {
-        return String.format("Id: %s, name: %s, birthday: %s, command: %s", getId(), getName(),
-                getBirthday(), getCommand());
+        return String.format("Id: %s, name: %s, birthday: %s, command: %s, type: %s", getId(), getName(),
+                getBirthday(), getCommand(), getType());
     }
 
 }

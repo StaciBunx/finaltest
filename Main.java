@@ -1,4 +1,3 @@
-import java.io.File;
 
 import Controller.AnimalManager;
 import Model.*;

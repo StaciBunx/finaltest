@@ -1,7 +1,9 @@
 package Controller;
 
+import java.util.List;
+
 import Model.Animal;
-import Model.Cat;
+import Model.AnimalBasic;
 import Model.Shelter;
 
 public class AnimalManager {
@@ -14,5 +16,9 @@ public class AnimalManager {
     public void saveAnimal(Animal animal) throws Exception {
         // validateAnimal(animal);
         shelter.createAnimal(animal);
+    }
+
+    public List<Animal> readAnimalList() {
+        return shelter.getAllAnimals();
     }
 }
