@@ -7,12 +7,6 @@ public class Shelter implements ShelterInterface {
     private FileOperations fileOperations;
     private AnimalMapper mapper = new AnimalMapper();
 
-    // List<Animal> shelter = new ArrayList<>();
-
-    // public void addAnimal(Animal animal) {
-    // shelter.add(animal);
-    // }
-
     public Shelter(FileOperations fileOperations) {
         this.fileOperations = fileOperations;
     }
@@ -56,6 +50,26 @@ public class Shelter implements ShelterInterface {
             }
         }
         throw new Exception("Animal not found");
+    }
+
+
+
+    @Override
+    public void deleteAnimal(String id) throws Exception {
+        List<Animal> animals = getAllAnimals();
+        Animal foundAnimal = findAnimalbyId(animals, id);
+        animals.remove(foundAnimal);
+        saveAnimalForFile(animals);
+    }
+
+    @Override
+    public void updateCommands(String id, String newCommand) throws Exception {
+        List<Animal> animals = getAllAnimals();
+        Animal updateAnimal = findAnimalbyId(animals, id);
+        updateAnimal.setCommand(newCommand);
+        deleteAnimal(id);
+        createAnimal(updateAnimal);
+
     }
 
 }

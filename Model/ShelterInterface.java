@@ -9,4 +9,8 @@ public interface ShelterInterface {
 
     Animal showAnimal(String id) throws Exception;
 
+    void deleteAnimal(String id) throws Exception;
+
+    void updateCommands(String id, String commands) throws Exception;
+
 }

@@ -1,3 +1,4 @@
 1,eagwe,wegweg,wegwe,home animal
 2,reshser,wgwew,awgewge,home animal
-3,wegm;wlga,e,rwghklwrmhl,wlkhm;lwh,pack animal
+3,wegm;wlga,e,rwghklwrmhl,wlkhm;lwh
+4,Kuka,now,slep, make friends,home animal

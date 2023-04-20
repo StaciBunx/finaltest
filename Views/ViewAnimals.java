@@ -5,7 +5,6 @@ import java.util.Scanner;
 
 import Controller.AnimalManager;
 import Model.Animal;
-import Model.AnimalBasic;
 import Model.Camel;
 import Model.Cat;
 import Model.Dog;
@@ -28,7 +27,7 @@ public class ViewAnimals {
 
         while (true) {
             String commands = prompt(
-                    "Type what do you want to do:\n[ADD] - add new animal\n[COMM] - check out animal command\n[VIEW] - view all animals in the shelter\n[EXIT] - if you want to quit\n");
+                    "Type what do you want to do:\n[ADD] - add new animal\n[CHECK] - check out current animal's info\n[LIST] - list all animals in the shelter\n[EXIT] - if you want to quit\n");
             try {
                 com = Commands.valueOf(commands);
             } catch (IllegalArgumentException e) {
@@ -44,11 +43,11 @@ public class ViewAnimals {
                         System.out.println("New animal has been added!\n\n");
                         break;
 
-                    case COMM:
-                        Animal selectedAnimal = checkCommands();
+                    case CHECK:
+                        showAnimal();
                         break;
 
-                    case VIEW:
+                    case LIST:
                         List<Animal> animalList = manager.readAnimalList();
                         for (Animal animal : animalList) {
                             System.out.println(animal);
@@ -63,18 +62,27 @@ public class ViewAnimals {
 
     }
 
-    private Animal checkCommands() throws Exception {
-        String choice = prompt("Type what do you want to do:\n1.Check current commands\n2.Update commands\n");
+    private void showAnimal() throws Exception {
+        String choice = prompt("Type what do you want to do:\n1.Check out current animal in the shelter\n2.Update commands for the aminal\n");
         if (choice.equals("1")) {
-            String searchId = prompt("Type animal's Id");
+            String searchId = prompt("Type animal's Id\n");
             Animal searchedAnimal = manager.readAnimalRecord(searchId);
             System.out.println("Here is what we found!");
             System.out.println(searchedAnimal);
+            System.out.println();
         }
         if (choice.equals("2")) {
+            String searchId = prompt("Type animal's Id\n");
+            String newCommand = prompt("Type new commands\n");
+            manager.updateCommands(searchId,newCommand);
+            System.out.println("Commands updated!\n\n");
+
+
         }
-        throw new Exception("Wrong command");
+        throw new Exception("Wrong command!");
     }
+
+
 
     private Animal setAnimal() throws Exception {
         String species = prompt("Type what is the animal:\n1.cat\n2.dog\n3.hamster\n4.horse\n5.camel\n6.donkey\n");
