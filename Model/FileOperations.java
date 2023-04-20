@@ -53,7 +53,7 @@ public class FileOperations implements FileOperationsInterface {
                 // запись всей строки
                 writer.write(line);
                 // запись по символам
-                writer.append("\n");
+                writer.append('\n');
             }
             writer.flush();
         } catch (IOException ex) {

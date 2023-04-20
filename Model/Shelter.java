@@ -30,9 +30,7 @@ public class Shelter implements ShelterInterface {
     @Override
     public void createAnimal(Animal animal) {
         List<Animal> animals = getAllAnimals();
-        for (Animal item : animals) {
-            System.out.println(item);
-        }
+        animals.add(animal);
         saveAnimalForFile(animals);
 
     }
@@ -57,7 +55,7 @@ public class Shelter implements ShelterInterface {
                 return animal;
             }
         }
-        throw new Exception("User not found");
+        throw new Exception("Animal not found");
     }
 
 }

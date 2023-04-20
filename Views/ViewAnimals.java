@@ -40,7 +40,6 @@ public class ViewAnimals {
                 switch (com) {
                     case ADD:
                         Animal newAnimal = setAnimal();
-
                         manager.saveAnimal(newAnimal);
                         System.out.println("New animal has been added!\n\n");
                         break;
