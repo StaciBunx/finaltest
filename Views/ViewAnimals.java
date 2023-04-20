@@ -71,19 +71,32 @@ public class ViewAnimals {
         String birthday = prompt("Birthday: ");
         String type = "";
         String command = prompt("Which commands your animal can do: ");
-        if (species.contains("1"))
+        if (species.equals("1")) {
             type = "home animal";
             return new Cat(id, name, birthday, command, type);
-        if (species.contains("2"))
-            return new Dog(id, name, birthday, command);
-        if (species.contains("3"))
-            return new Hamster(id, name, birthday, command);
-        if (species.contains("4"))
-            return new Horse(id, name, birthday, command);
-        if (species.contains("5"))
-            return new Camel(id, name, birthday, command);
-        if (species.contains("6"))
-            return new Donkey(id, name, birthday, command);
+        }
+        if (species.equals("2")) {
+            type = "home animal";
+            return new Dog(id, name, birthday, command, type);
+        }
+        if (species.equals("3")) {
+            type = "home animal";
+            return new Hamster(id, name, birthday, command, type);
+        }
+        if (species.equals("4")) {
+            type = "pack animal";
+            return new Horse(id, name, birthday, command, type);
+        }
+        if (species.equals("5")) {
+            type = "pack animal";
+            return new Camel(id, name, birthday, command, type);
+        }
+        if (species.equals("6"))
+
+        {
+            type = "pack animal";
+            return new Donkey(id, name, birthday, command, type);
+        }
         throw new Exception("Wrong command");
 
     }
