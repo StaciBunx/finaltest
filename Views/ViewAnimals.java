@@ -45,7 +45,7 @@ public class ViewAnimals {
                         break;
 
                     case COMM:
-
+                        Animal selectedAnimal = checkCommands();
                         break;
 
                     case VIEW:
@@ -61,6 +61,19 @@ public class ViewAnimals {
 
         }
 
+    }
+
+    private Animal checkCommands() throws Exception {
+        String choice = prompt("Type what do you want to do:\n1.Check current commands\n2.Update commands\n");
+        if (choice.equals("1")) {
+            String searchId = prompt("Type animal's Id");
+            Animal searchedAnimal = manager.readAnimalRecord(searchId);
+            System.out.println("Here is what we found!");
+            System.out.println(searchedAnimal);
+        }
+        if (choice.equals("2")) {
+        }
+        throw new Exception("Wrong command");
     }
 
     private Animal setAnimal() throws Exception {

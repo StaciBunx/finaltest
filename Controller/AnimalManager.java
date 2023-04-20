@@ -21,4 +21,9 @@ public class AnimalManager {
     public List<Animal> readAnimalList() {
         return shelter.getAllAnimals();
     }
+
+    public Animal readAnimalRecord (String id) throws Exception {
+        return shelter.showAnimal(id);
+    }
+
 }

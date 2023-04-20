@@ -8,4 +8,5 @@ public interface ShelterInterface {
     void createAnimal(Animal animal);
 
     Animal showAnimal(String id) throws Exception;
+
 }

@@ -44,9 +44,9 @@ public class Shelter implements ShelterInterface {
     }
 
     @Override
-    public Animal showAnimal(String animalId) throws Exception {
+    public Animal showAnimal(String id) throws Exception {
         List<Animal> animals = getAllAnimals();
-        return findAnimalbyId(animals, animalId);
+        return findAnimalbyId(animals, id);
     }
 
     private Animal findAnimalbyId(List<Animal> animals, String animalId) throws Exception {
