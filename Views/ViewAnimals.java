@@ -40,7 +40,7 @@ public class ViewAnimals {
                     case ADD:
                         Animal newAnimal = setAnimal();
                         manager.saveAnimal(newAnimal);
-                        System.out.println("New animal has been added!\n\n");
+                        System.out.println("New animal has been added!\n");
                         break;
 
                     case CHECK:
@@ -63,26 +63,29 @@ public class ViewAnimals {
     }
 
     private void showAnimal() throws Exception {
-        String choice = prompt("Type what do you want to do:\n1.Check out current animal in the shelter\n2.Update commands for the aminal\n");
-        if (choice.equals("1")) {
-            String searchId = prompt("Type animal's Id\n");
-            Animal searchedAnimal = manager.readAnimalRecord(searchId);
-            System.out.println("Here is what we found!");
-            System.out.println(searchedAnimal);
-            System.out.println();
+        String choice = prompt(
+                "Type what do you want to do:\n1.Check out current animal in the shelter\n2.Update commands for the aminal\n");
+        String searchId = "";
+        try {
+            switch (choice) {
+                case "1":
+                    searchId = prompt("Type animal's Id\n");
+                    Animal searchedAnimal = manager.readAnimalRecord(searchId);
+                    System.out.println("Here is what we found!");
+                    System.out.println(searchedAnimal);
+                    System.out.println();
+                    break;
+                case "2":
+                    searchId = prompt("Type animal's Id\n");
+                    String newCommand = prompt("Type new commands\n");
+                    manager.updateCommands(searchId, newCommand);
+                    System.out.println("Commands updated!\n");
+                    break;
+            }
+        } catch (Exception e) {
+            System.out.println("Wrong command");
         }
-        if (choice.equals("2")) {
-            String searchId = prompt("Type animal's Id\n");
-            String newCommand = prompt("Type new commands\n");
-            manager.updateCommands(searchId,newCommand);
-            System.out.println("Commands updated!\n\n");
-
-
-        }
-        throw new Exception("Wrong command!");
     }
-
-
 
     private Animal setAnimal() throws Exception {
         String species = prompt("Type what is the animal:\n1.cat\n2.dog\n3.hamster\n4.horse\n5.camel\n6.donkey\n");
