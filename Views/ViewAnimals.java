@@ -17,6 +17,7 @@ public class ViewAnimals {
     public void run() {
         Commands com = Commands.NONE;
 
+
         while (true) {
             String commands = prompt(
                     "Type what do you want to do:\n[ADD] - add new animal\n[CHECK] - check out current animal's info\n[LIST] - list all animals in the shelter\n[EXIT] - if you want to quit\n");
@@ -27,17 +28,14 @@ public class ViewAnimals {
             }
             if (com == Commands.EXIT)
                 return;
-            try {
+            try (Counter count = new Counter()) {
                 switch (com) {
                     case ADD:
-                        try (Counter counter = new Counter()) {
-                            Animal newAnimal = setAnimal();
-                            manager.saveAnimal(newAnimal);
-                            System.out.println("New animal has been added!\n");
-                            break;
-                        } catch (Exception e) {
-                            System.out.println(e.getMessage());
-                        }
+                        Animal newAnimal = setAnimal();
+                        manager.saveAnimal(newAnimal);
+                        count.add();
+                        System.out.println("New animal has been added!\n");
+                        break;
                     case CHECK:
                         showAnimal();
                         break;

@@ -13,7 +13,7 @@ public class AnimalManager {
     }
 
     public void saveAnimal(Animal animal) throws Exception {
-        // validateAnimal(animal);
+        validateAnimal(animal);
         shelter.createAnimal(animal);
     }
 
@@ -33,4 +33,18 @@ public class AnimalManager {
         shelter.deleteAnimal(id);
     }
 
+    private void validateAnimal(Animal animal) throws Exception {
+        if (animal.getId().isEmpty()) {
+            throw new Exception("Id can't be empty!");
+        }
+        if (animal.getName().isEmpty()) {
+            throw new Exception("Name can't be empty!");
+        }
+        if (animal.getBirthday().isEmpty()) {
+            throw new Exception("Birthday can't be empty!");
+        }
+        if (animal.getCommand().isEmpty()) {
+            throw new Exception("Commands can't be empty!");
+        }
+    }
 }
