@@ -1,24 +1,14 @@
 package Model;
 
-// import Controller.AnimalManager;
-
 /**
- * Абстракатный класс
+ * Abstract class Animal
  */
 public abstract class Animal {
-    private String id = "";
+    protected String id = "";
     protected String name;
+    protected String type;
     protected String birthday;
     protected String command;
-    private String type;
-
-    // public Animal(String id, String name, String birthday, String command, String type) {
-    //     this.id = id;
-    //     this.name = name;
-    //     this.birthday = birthday;
-    //     this.command = command;
-    //     this.type = type;
-    // }
 
     public String getType() {
         return type;

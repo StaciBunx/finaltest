@@ -21,11 +21,11 @@ public class AnimalManager {
         return shelter.getAllAnimals();
     }
 
-    public Animal readAnimalRecord (String id) throws Exception {
+    public Animal readAnimalRecord(String id) throws Exception {
         return shelter.showAnimal(id);
     }
 
-    public void updateCommands (String id, String newCommand) throws Exception {
+    public void updateCommands(String id, String newCommand) throws Exception {
         shelter.updateCommands(id, newCommand);
     }
 

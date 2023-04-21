@@ -17,7 +17,6 @@ public class ViewAnimals {
     public void run() {
         Commands com = Commands.NONE;
 
-
         while (true) {
             String commands = prompt(
                     "Type what do you want to do:\n[ADD] - add new animal\n[CHECK] - check out current animal's info\n[LIST] - list all animals in the shelter\n[EXIT] - if you want to quit\n");
