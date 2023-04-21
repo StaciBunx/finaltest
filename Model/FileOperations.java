@@ -7,7 +7,7 @@ import java.util.List;
 public class FileOperations implements FileOperationsInterface {
     private String fileName;
 
-    public FileOperations(String fileName) {
+    public FileOperations(String fileName){
         this.fileName = fileName;
         try (FileWriter writer = new FileWriter(fileName, true)) {
             writer.flush();

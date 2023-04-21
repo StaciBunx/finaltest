@@ -4,18 +4,10 @@ import java.util.List;
 import java.util.Scanner;
 
 import Controller.AnimalManager;
-import Model.Animal;
-import Model.Camel;
-import Model.Cat;
-import Model.Dog;
-import Model.Donkey;
-import Model.Hamster;
-import Model.Horse;
-// import Model.Shelter;
+import Model.*;
 
 public class ViewAnimals {
 
-    // private Shelter shelter = new Shelter();
     private AnimalManager manager;
 
     public ViewAnimals(AnimalManager manager) {
@@ -38,11 +30,14 @@ public class ViewAnimals {
             try {
                 switch (com) {
                     case ADD:
-                        Animal newAnimal = setAnimal();
-                        manager.saveAnimal(newAnimal);
-                        System.out.println("New animal has been added!\n");
-                        break;
-
+                        try (Counter counter = new Counter()) {
+                            Animal newAnimal = setAnimal();
+                            manager.saveAnimal(newAnimal);
+                            System.out.println("New animal has been added!\n");
+                            break;
+                        } catch (Exception e) {
+                            System.out.println(e.getMessage());
+                        }
                     case CHECK:
                         showAnimal();
                         break;
@@ -71,19 +66,19 @@ public class ViewAnimals {
                 case "1":
                     searchId = prompt("Type animal's Id\n");
                     Animal searchedAnimal = manager.readAnimalRecord(searchId);
-                    System.out.println("Here is what we found!");
+                    System.out.println("Here what we found!");
                     System.out.println(searchedAnimal);
                     System.out.println();
                     break;
                 case "2":
-                    searchId = prompt("Type animal's Id\n");
-                    String newCommand = prompt("Type new commands\n");
+                    searchId = prompt("Type animal's Id:\n");
+                    String newCommand = prompt("Type new commands:\n");
                     manager.updateCommands(searchId, newCommand);
                     System.out.println("Commands updated!\n");
                     break;
             }
         } catch (Exception e) {
-            System.out.println("Wrong command");
+            System.out.println("Wrong command!");
         }
     }
 
@@ -95,29 +90,29 @@ public class ViewAnimals {
         String type = "";
         String command = prompt("Which commands your animal can do: ");
         if (species.equals("1")) {
-            type = "home animal";
+            type = "cat, home animal";
             return new Cat(id, name, birthday, command, type);
         }
         if (species.equals("2")) {
-            type = "home animal";
+            type = "dog, home animal";
             return new Dog(id, name, birthday, command, type);
         }
         if (species.equals("3")) {
-            type = "home animal";
+            type = "hamster, home animal";
             return new Hamster(id, name, birthday, command, type);
         }
         if (species.equals("4")) {
-            type = "pack animal";
+            type = "horse, pack animal";
             return new Horse(id, name, birthday, command, type);
         }
         if (species.equals("5")) {
-            type = "pack animal";
+            type = "camel, pack animal";
             return new Camel(id, name, birthday, command, type);
         }
         if (species.equals("6"))
 
         {
-            type = "pack animal";
+            type = "donkey, pack animal";
             return new Donkey(id, name, birthday, command, type);
         }
         throw new Exception("Wrong command");

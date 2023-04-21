@@ -1,3 +1,0 @@
-1;Musya;now;murk;home animal
-3;Kuka;next month;jump;pack animal
-2;Kiki;soon;just sleep;home animal
